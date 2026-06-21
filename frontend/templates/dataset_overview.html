@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dataset Overview</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+            padding: 50px;
+            text-align: center;
+        }
+        .section {
+            background: white;
+            margin: 30px auto;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            width: 65%;
+        }
+        iframe {
+            width: 100%;
+            height: 500px;
+            border: none;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>📊 Dataset Overview</h1>
+    <p>{{ shape_info }}</p>
+
+    <div class="section">
+        {{ html_data_types | safe }}
+    </div>
+
+    {% if html_missing %}
+    <div class="section">
+        {{ html_missing | safe }}
+    </div>
+    {% endif %}
+
+    {% for chart in category_plots %}
+    <div class="section">
+        {{ chart | safe }}
+    </div>
+    {% endfor %}
+
+    {% if html_avg_waste %}
+    <div class="section">
+        {{ html_avg_waste | safe }}
+    </div>
+    {% endif %}
+
+    <a href="{{ url_for('dashboard') }}" style="text-decoration: none;">
+        <button style="margin-top: 30px; padding: 12px 24px; font-size: 16px; border: none; border-radius: 6px; background: #28a745; color: white; cursor: pointer;">
+            ⬅ Back to Dashboard
+        </button>
+    </a>
+
+</body>
+</html>

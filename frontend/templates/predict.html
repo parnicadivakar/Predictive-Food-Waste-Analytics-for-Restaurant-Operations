@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Predict Food Waste</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 30px;
+            background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+            text-align: center;
+        }
+        form {
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            display: inline-block;
+            box-shadow: 0px 5px 10px rgba(0,0,0,0.1);
+        }
+        input, select {
+            padding: 10px;
+            margin: 10px;
+            font-size: 16px;
+        }
+        .btn {
+            padding: 10px 20px;
+            background: #28a745;
+            color: white;
+            border: none;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .result {
+            margin-top: 20px;
+            font-size: 20px;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <h2>🧠 Predict Food Waste</h2>
+    <form method="POST">
+        <label>Number of Guests:</label><br>
+        <input type="number" name="guests" required><br>
+
+        <label>Event Type:</label><br>
+        <select name="event_type" required>
+            <option value="Wedding">Wedding</option>
+            <option value="Corporate">Corporate</option>
+            <option value="Social">Social</option>
+        </select><br>
+
+        <label>Storage Conditions:</label><br>
+        <select name="storage" required>
+            <option value="Cold">Cold</option>
+            <option value="Ambient">Ambient</option>
+        </select><br>
+
+        <button class="btn" type="submit">Predict</button>
+    </form>
+
+    {% if prediction %}
+    <div class="result">
+        <p>📦 Predicted Food Waste: <strong>{{ prediction }} kg</strong></p>
+    </div>
+    {% endif %}
+    {% if recommendations %}
+    {% if recommendations %}
+    <div style="
+        margin-top: 30px;
+        padding: 20px;
+        max-width: 500px;
+        margin-left: auto;
+        margin-right: auto;
+        background-color: #fffbea;
+        border-left: 6px solid #ffc107;
+        border-radius: 10px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        text-align: left;
+    ">
+        <h3 style="color: #d39e00;">💡 Recommended Actions:</h3>
+        <ul style="padding-left: 20px; font-size: 16px; color: #444;">
+            {% for rec in recommendations %}
+                <li>{{ rec }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+    {% endif %}
+    
+{% endif %}
+
+    <br><br><a href="{{ url_for('dashboard') }}" class="btn" style="margin-top:30px;">⬅ Back to Dashboard</a>
+</body>
+</html>

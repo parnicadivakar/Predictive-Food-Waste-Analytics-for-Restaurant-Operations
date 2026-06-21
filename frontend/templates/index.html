@@ -1,0 +1,132 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food Waste Analysis Dashboard</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+            padding: 50px;
+            color: #333;
+        }
+        .container {
+            max-width: 900px;
+            margin: auto;
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        .btn-container {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        .btn {
+            padding: 12px 20px;
+            font-size: 16px;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            background: linear-gradient(135deg, #ff7e5f, #feb47b);
+            text-decoration: none;
+            transition: 0.3s ease-in-out;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+        }
+        .btn:hover {
+            background: linear-gradient(135deg, #ff6b6b, #ffb88c);
+            transform: scale(1.05);
+        }
+        .chart-container {
+            width: 80%;
+            max-width: 600px;
+            margin: 20px auto;
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .recommendations-container {
+            background-color: #fff;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 15px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: left;
+        }
+        .recommendations-container ul {
+            padding-left: 20px;
+            list-style-position: inside;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Food Waste Analysis Dashboard</h1>
+        <div class="btn-container">
+            <a href="{{ url_for('dataset_overview') }}" class="btn">View Dataset Overview</a>
+            <button class="btn" id="runButton" onclick="runAllProcesses()">Run Data Analysis, ML Model & Recommendations</button>
+            <a href="{{ url_for('predict') }}" class="btn">Predict Food Waste</a>
+        </div>
+
+        <h3>Food Waste by Location:</h3>
+        <div class="chart-container">
+            <canvas id="wasteChart"></canvas>
+        </div>
+
+        <h3>Food Waste by Type:</h3>
+        <div class="chart-container">
+            <canvas id="foodTypeChart"></canvas>
+        </div>
+
+        <h3>Model Performance:</h3>
+        <div class="recommendations-container">
+            <p><strong>R² Score:</strong> <span id="r2-score">-</span></p>
+        </div>
+
+        <h3>Top Correlated Factors with Food Waste:</h3>
+        <div class="recommendations-container">
+            <ul id="correlation-factors"></ul>
+        </div>
+        <div class="chart-container">
+            <canvas id="correlationChart"></canvas>
+        </div>
+
+        <h3>Sample Predictions:</h3>
+        <div class="recommendations-container">
+            <ul id="sample-predictions"></ul>
+        </div>
+
+        <h3>Actual vs Predicted Waste (Sample)</h3>
+<div class="chart-container">
+    <canvas id="actualPredictedChart"></canvas>
+</div>
+
+<h3>Food Type vs Average Waste Efficiency</h3>
+<div class="chart-container">
+    <canvas id="foodEfficiencyChart"></canvas>
+</div>
+
+
+
+        <h3>Recommendations:</h3>
+        <div class="recommendations-container">
+            <ul id="recommendations"></ul>
+        </div>
+
+        <h3>Errors (if any):</h3>
+        <pre id="error-messages"></pre>
+
+        <a href="{{ url_for('home') }}" class="btn">Back to Main Page</a>
+    </div>
+
+    <script src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
+</html>

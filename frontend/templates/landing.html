@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to Food Waste Analysis</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            background: linear-gradient(135deg, #f9f9f9, #e0f7fa);
+            padding: 50px;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: #333;
+            font-size: 32px;
+        }
+        p {
+            font-size: 18px;
+            color: #555;
+            line-height: 1.8;
+        }
+        .btn {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 14px 24px;
+            font-size: 18px;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            background: linear-gradient(135deg, #28a745, #5fd27f);
+            text-decoration: none;
+            transition: 0.3s ease-in-out;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .btn:hover {
+            background: linear-gradient(135deg, #23963b, #4ec870);
+            transform: scale(1.05);
+        }
+        .image-container {
+            margin: 20px 0;
+        }
+        .image-container img {
+            width: 100%;
+            max-width: 600px;
+            border-radius: 10px;
+            box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome to Food Waste Analysis</h1>
+        <div class="image-container">
+            <img src="{{ url_for('static', filename='images/banner.png') }}" alt="Food Waste Awareness">
+
+        </div>
+        <p>Food waste is a critical issue affecting sustainability, resources, and costs. Our platform helps you analyze food wastage patterns, predict trends, and implement strategies to minimize waste efficiently.</p>
+        <p>Explore insightful analytics and recommendations to optimize food management in restaurants and other food services.</p>
+        <a href="{{ url_for('dashboard') }}" class="btn">Go to Dashboard</a>
+    </div>
+</body>
+</html>
