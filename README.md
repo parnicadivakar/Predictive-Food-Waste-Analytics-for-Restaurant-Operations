@@ -18,6 +18,7 @@ Generated data-driven recommendations to support inventory optimization and wast
 
 **Tech Stack**
 
+
 Programming: Python
 Database: MongoDB
 Machine Learning: XGBoost, Scikit-Learn
@@ -27,6 +28,7 @@ Tools: Jupyter Notebook, VS Code
 
 **Key Features**
 
+
 Food Waste Forecasting
 Event-Based Waste Analysis
 Interactive Analytics Dashboard
@@ -34,6 +36,7 @@ Waste Reduction Recommendations
 Inventory Planning Support
 
 **Machine Learning**
+
 
 Model: XGBoost Regressor
 
@@ -50,6 +53,7 @@ Quantity of Food Prepared
 
 
 **Outcomes**
+
 
 Identified key factors contributing to food wastage across restaurant events.
 Predicted expected food waste using historical operational data.
